@@ -209,7 +209,7 @@ def finemail(request,pk):
 
 def finremail(request,pk):
     user = User.objects.filter(id=request.user.id).first()
-    requester = finreq.objects.filter(id=pk).first()
+    requester = finreq.objects.filter(id=pk).first()   
     email = EmailMessage(
             subject='Loan Rejected',
             body='Mr/Mrs ' +requester.firstname + ' your loan has been rejected ',

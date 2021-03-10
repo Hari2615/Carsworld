@@ -65,7 +65,7 @@ class sellcarform(forms.ModelForm):
     class Meta:
         model=sellcar
         fields="__all__"
-        exclude=['isfav']
+        #exclude=['isfav']
         
 class finreqform(forms.ModelForm):
    
