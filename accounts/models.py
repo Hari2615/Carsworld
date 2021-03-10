@@ -121,7 +121,7 @@ class finreq(models.Model):
         return reverse('loanreqdetails', args=[str(self.id)])
 
     def __str__(self):
-        n=self.firstname+" "+self.lastname
+        n=self.firstname+" "+self.lastname   
         return n
 
 class favv(models.Model):
