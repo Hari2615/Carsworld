@@ -1,0 +1,136 @@
+.topnav {
+  overflow: hidden;
+  background-color: rgb(26, 26, 26);
+  position:sticky;
+  top: 0;
+}
+
+ 
+
+.topnav a {
+  float: right;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+
+}
+body::-webkit-scrollbar {
+  display: none;
+}
+.vache{
+  margin-left: auto;
+  margin-right: auto;
+  width: fit-content;
+}
+body{
+  background-color: rgb(26, 26, 26);
+ 
+}
+#center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+  max-height: 550px;
+}
+
+.topnav a:hover {
+  background-color: rgb(75, 75, 75);
+  color: black;
+}
+.button {
+  background-color: rgb(76, 175, 80);
+  border: none;
+  color: white;
+  padding: 17px 65px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+ 
+img{
+  object-fit: cover;
+  overflow: hidden;
+}
+.topnav a.active {
+  background-color: #4CAF50;
+  color: white;
+
+}
+.text-block {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background-color: black;
+  color: white;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.topnav a.activa {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+.hari{
+  margin-top: 50px;
+}
+#mitang{
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  border-collapse: collapse;
+  background-color: rgb(26, 26, 26);
+  color:white;
+  box-shadow: 1px 4px 8px rgb(54, 54, 54);
+}
+#mitang th{
+  padding: 15px;
+  text-align: center;
+  font-size: 25px;
+}
+#mitang td{
+  padding: 15px;
+  text-align: left;
+  font-size: 25px;
+}
+.iiii{
+  float: left;
+  height: 30px;
+  width: 30px;
+}
+.i{
+  float: left;
+  height: 30px;
+  width: 30px;
+}
+.iii{
+  float: left;
+  height: 30px;
+  width: 30px;
+}
+.ii{
+  float: left;
+  height: 30px;
+  width: 30px;
+}
+#footer{
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  font-size: 15px;
+  color: white;
+
+}
+.footer{
+  margin-top: 100px;
+  border-top: thin solid white;
+}

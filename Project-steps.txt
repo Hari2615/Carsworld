@@ -1,0 +1,21 @@
+1)	Application Setup
+2)	Database connectivity
+3)	Homepage template
+4)	Create admin panel
+5)	Company registration through admin panel
+6)	Login/Signup Templates
+
+
+reports for admin
+
+My ads for customer
+
+potani add potane na dekhai
+
+mitang ni portfolio site
+
+testing 
+
+bas have
+
+sudo /usr/pgadmin4/bin/setup-web.sh

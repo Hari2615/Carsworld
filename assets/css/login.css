@@ -1,0 +1,74 @@
+.topnav {
+    overflow: hidden;
+    background-color: rgb(26, 26, 26);
+    position:sticky;
+    top: 0;
+  }
+  
+   
+  
+  .topnav a {
+    float: right;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  
+  }
+
+  body{
+    background-color: rgb(26, 26, 26);
+  }
+  .topnav a:hover {
+    background-color: rgb(75, 75, 75);
+    color: black;
+  }
+  .topnav a.active {
+    background-color: #4CAF50;
+    color: white;
+  
+  }
+  #option th{
+    display: block;
+  }
+  .option{
+      margin-top: 200px;
+      margin-bottom: 200px;
+      
+  }
+  .button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 17px 65px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+  .topnav a.activa {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+
+  #footer{
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-size: 15px;
+    color: white;
+
+  
+  }
+  .footer{
+    margin-top: 300px;
+    border-top: thin solid white;
+  }    

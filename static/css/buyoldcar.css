@@ -1,0 +1,82 @@
+.topnav {
+    overflow: hidden;
+    background-color: rgb(26, 26, 26);
+    position:sticky;
+    top: 0;
+  }
+  
+   
+  
+  .topnav a {
+    float: right;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  
+  }
+   
+  body{
+    background-color: rgb(26, 26, 26);
+  }
+  .topnav a:hover {
+    background-color: rgb(75, 75, 75);
+    color: black;
+  }
+  .button {
+    background-color: rgb(76, 175, 80);
+    border: none;
+    color: white;
+    padding: 17px 65px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+   
+  
+  .topnav a.active {
+    background-color: #4CAF50;
+    color: white;
+  
+  }
+  .topnav a.activa {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+
+  #footer{
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-size: 15px;
+    color: white;
+  
+  }
+  .footer{
+    margin-top: 100px;
+    border-top: thin solid white;
+  }
+  .w3-row-padding,.w3-row-padding>.w3-half,.w3-row-padding>.w3-third,.w3-row-padding>.w3-twothird,.w3-row-padding>.w3-threequarter,.w3-row-padding>.w3-quarter,.w3-row-padding>.w3-col{padding:0 8px}
+  .w3-row-padding:after,.w3-row-padding:before{content:"";display:table;clear:both}
+  .w3-col.l3{width:24.99999%}
+  .w3-col.m6{width:33.33333%}
+  .w3-margin-bottom{margin-bottom:16px!important}
+  .w3-display-container{position:relative}
+  .w3-display-container:hover .w3-display-hover{display:block}.w3-display-container:hover span.w3-display-hover{display:inline-block}
+  .w3-display-topleft{position:absolute;left:0;top:0}
+  .w3-black,.w3-hover-black:hover{color:#fff!important;background-color:#000!important}
+  .w3-padding{padding:8px 16px!important}.w3-padding-large{padding:12px 24px!important}
+  .w3-border-bottom{border-bottom:1px solid #ccc!important}
+  .w3-border-light-grey{border-color:#f1f1f1!important}
+  .w3-padding-16{padding-top:2px!important;padding-bottom:10px!important}
+  .w3-padding-2{padding-top:2px!important;padding-bottom:2px!important}
+  .mySlides {display:none;}

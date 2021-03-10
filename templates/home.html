@@ -1,0 +1,416 @@
+           
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Videograph Template">
+    <meta name="keywords" content="Videograph, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Carsworld</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="{%static "css/bootstrap.min.css"%}" type="text/css">
+    <link rel="stylesheet" href="{%static "css/font-awesome.min.css"%}" type="text/css">
+    <link rel="stylesheet" href="{%static "css/elegant-icons.css"%}" type="text/css">
+    <link rel="stylesheet" href="{%static "css/owl.carousel.min.css"%}" type="text/css">
+    <link rel="stylesheet" href="{%static "css/magnific-popup.css"%}" type="text/css">
+    <link rel="stylesheet" href="{%static "css/slicknav.min.css"%}" type="text/css">
+    <link rel="stylesheet" href="{%static "css/style.css"%}" type="text/css">
+    <link rel="icon" type="image/x-icon" href="{%static "images/slogo.png" %}"> 
+
+    <style>
+        #myBtn {
+            display: none; /* Hidden by default */
+            position: fixed; /* Fixed/sticky position */
+            bottom: 20px; /* Place the button at the bottom of the page */
+            right: 30px; /* Place the button 30px from the right */
+            z-index: 99; /* Make sure it does not overlap */
+            border: none; /* Remove borders */
+            outline: none; /* Remove outline */
+            background-color: rgb(65, 41, 110); /* Set a background color */
+            color: white; /* Text color */
+            cursor: pointer; /* Add a mouse pointer on hover */
+            padding: 15px; /* Some padding */
+            border-radius: 10px; /* Rounded corners */
+            font-size: 18px; /* Increase font size */
+          }
+          
+          #myBtn:hover {
+            background-color: #555; /* Add a dark-grey background on hover */
+          }
+        </style>
+</head>
+
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Header Section Begin -->
+    <header class="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2">
+                    <div class="header__logo">
+                        <a href="{% url 'Home' %}"><img src="{% static "images/logo.png" %}" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-lg-10">
+                    <div class="header__nav__option">
+                        <nav class="header__nav__menu mobile-menu">
+                            {%if user.is_authenticated%}
+                            <ul>
+                                
+                                <li><a href="{% url 'buyoldcar' %}">BUY USED CARS</a></li>
+                                <li><a href="{% url 'buynewcar' %}">NEW CARS</a></li>
+                                <li><a href="{% url 'sellcar' %}">SELL CAR</a></li>
+                                <li><a href="">Hello {{user.first_name}}</a></li>
+                                <li><a href="{% url 'logout' %}">LOGOUT</a></li>
+                               
+                            </ul>
+                            {%else%}
+                            <ul>
+                                <li class="active"><a href="{% url 'Home' %}">HOME</a></li>
+                                <li><a href="{% url 'userlogin' %}">BUY USED CARS</a></li>
+                                <li><a href="{% url 'userlogin' %}">NEW CARS</a></li>
+                                <li><a href="{% url 'userlogin' %}">SELL CAR</a></li>
+                               
+                                <li><a href="{% url 'userlogin' %}">LOGIN</a>
+                                    <ul class="dropdown">
+                                        <li><a href="{% url 'userlogin' %}">LOGIN</a></li>
+                                        <li><a href="{% url 'register' %}">REGISTER</a></li>
+                                    </ul>
+                                </li>
+                               
+                            </ul>
+                            {%endif%}
+                        </nav>
+                        
+                    </div>
+                </div>
+            </div>
+            <div id="mobile-menu-wrap"></div>
+        </div>
+    </header>
+    <!-- Header End -->
+
+    <!-- Hero Section Begin -->
+    <section class="hero">
+        <div class="hero__slider owl-carousel">
+            <div class="hero__item set-bg" data-setbg="{% static "images/hero-1.jpg" %}">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="hero__text">
+                                <span>For Buying Used Cars from</span>
+                                <h2>CARSWORLD</h2>
+                                {%if user.is_authenticated%}
+                                <a href="{% url 'buyoldcar' %}" class="primary-btn">View Cars</a>
+                                {%else%}
+                                <a href="{% url 'userlogin' %}" class="primary-btn">View Cars</a>
+                                {%endif%}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero__item set-bg" data-setbg="{% static "images/hero-1.jpg" %}">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="hero__text">
+                                <span>For Buying New Cars from</span>
+                                <h2>CARSWORLD</h2>
+                                {%if user.is_authenticated%}
+                                <a href="{% url 'buynewcar' %}" class="primary-btn">View Cars</a>
+                                {%else%}
+                                <a href="{% url 'userlogin' %}" class="primary-btn">View Cars</a>
+                                {%endif%}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero__item set-bg" data-setbg="{% static "images/hero-1.jpg" %}">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="hero__text">
+                                <span>For Selling your Car on</span>
+                                <h2>CARSWORLD</h2>
+                                {%if user.is_authenticated%}
+                                <a href="{% url 'sellcar' %}" class="primary-btn">Sell Car</a>
+                                {%else%}
+                                <a href="{% url 'userlogin' %}" class="primary-btn">Sell Car</a>
+                                {%endif%}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Hero Section End -->
+
+    <!-- Services Section Begin -->
+    <section class="services spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="services__title">
+                        <div class="section-title">
+                            <span>Our services</span>
+                            <h2>What We do?</h2>
+                        </div>
+                        <p>Carsworld is a perfect destination for all your needs realted to Cars, whether its new or old, buying or selling and even financing with simple and easy steps.</p>
+                        <a href="#" class="primary-btn">View all services</a>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="services__item">
+                                <div class="services__item__icon">
+                                    <img src="{%static "images/icons/si-6.png" %}" alt="">
+                                </div>
+                                <h4>Buy/Sell Cars</h4>
+                                <p>Whether you’re willing to buy new/used cars or to sell your car to genuine buyers than you are at correct spot.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="services__item">
+                                <div class="services__item__icon">
+                                    <img src="{%static "images/icons/si-77.png" %}" alt="">
+                                </div>
+                                <h4>Genuine Buyers</h4>
+                                <p>You get chance to feel that the other person is genuine and than only the further procedure of buying/selling occurs.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="services__item">
+                                <div class="services__item__icon">
+                                    <img src="{%static "images/icons/si-8.png" %}" alt="">
+                                </div>
+                                <h4>Finance Facility</h4>
+                                <p>We provide you with wide range of financers to select from for your help in financing your car in simple and easy steps.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="services__item">
+                                <div class="services__item__icon">
+                                    <img src="{%static "images/icons/si-10.png" %}" alt="">
+                                </div>
+                                <h4>Time is Money</h4>
+                                <p>Do not worry about time and money as time to contact owner of car is minimum and the money transaction is without any brokerage and third party involved.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Services Section End -->
+
+    
+
+    <!-- Counter Section Begin -->
+    <section class="counter">
+        <div class="container">
+            <div class="counter__content">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="counter__item">
+                            <div class="counter__item__text">
+                                <img src="{%static "images/icons/ci-2.png" %}" alt="">
+                                <h2 class="counter_num">{{count}}</h2>
+                                <p>Happy clients</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="counter__item second__item">
+                            <div class="counter__item__text">
+                                <img src="{%static "images/icons/ci-1.png" %}" alt="">
+                                <h2 class="counter_num">{{newcar}}</h2>
+                                <p>New Cars</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="counter__item third__item">
+                            <div class="counter__item__text">
+                                <img src="{%static "images/icons/ci-4.png" %}" alt="">
+                                <h2 class="counter_num">{{oldcar}}</h2>
+                                <p>Used Cars</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="counter__item four__item">
+                            <div class="counter__item__text">
+                                <img src="{%static "images/icons/ci-3.png" %}" alt="">
+                                <h2 class="counter_num">{{finr}}</h2>
+                                <p>Finance Requests</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Counter Section End -->
+
+    <!-- Team Section Begin -->
+    <section class="team spad set-bg" data-setbg="{%static "images/team-bg.jpg" %}">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title team__title">
+                        <span>Nice to meet</span>
+                        <h2>OUR Team</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-6 p-0">
+                   
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 p-0">
+                    <div class="team__item team__item--second set-bg" data-setbg="{%static "images/haribhai.jpg" %}">
+                        <div class="team__item__text" >
+                            <h4>HARIKRISHNA PATEL</h4>
+                            <p>DEVELOPER</p>
+                            <div class="team__item__social">
+                                <a href="https://www.facebook.com/hari.patel.3591"><i class="fa fa-facebook"></i></a>
+                                <a href="https://twitter.com/Haripatel2615"><i class="fa fa-twitter"></i></a>
+                                <a href="https://harikrishnapatel.me/"><i class="fa fa-dribbble"></i></a>
+                                <a href="https://www.instagram.com/_mr_hp/"><i class="fa fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 p-0">
+                    <div class="team__item team__item--third set-bg" data-setbg="{%static "images/mitangbhai.jpg" %}">
+                        <div class="team__item__text">
+                            <h4>MITANG SHAH</h4>
+                            <p>DEVELOPER</p>
+                            <div class="team__item__social">
+                                <a href="https://www.facebook.com/mitang.shah.18"><i class="fa fa-facebook"></i></a>
+                                <a href="https://twitter.com/ShahMitang"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-dribbble"></i></a>
+                                <a href="https://www.instagram.com/mitang_09/"><i class="fa fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 p-0">
+                   
+                </div>
+                <div class="col-lg-12 p-0">
+                    <div class="team__btn">
+                        <a href="{% url 'develop' %}" class="primary-btn">Meet Our Team</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Team Section End -->
+
+
+
+   
+
+    <!-- Footer Section Begin -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__top">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="footer__top__logo">
+                            <a href="{% url 'Home' %}"><img src="{%static "images/logo.png" %}" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                       
+                    </div>
+                </div>
+            </div>
+            <div class="footer__option">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="footer__option__item">
+                            <h5>About us</h5>
+                            <p>We are students of DEPSTAR Computer Engineering Department and this project is part of our final year curriculum.</p>
+                            
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-3">
+                        <div class="footer__option__item">
+                            <h5>Who we are</h5>
+                            <ul>
+                                <li><a href="{% url 'develop' %}">Team</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-3">
+                        <div class="footer__option__item">
+                            <h5>Our Service</h5>
+                            <ul>
+                                <li><a href="{% url 'buyoldcar' %}">Buy Used Cars</a></li>
+                                <li><a href="{% url 'buynewcar' %}">Buy New Cars</a></li>
+                                <li><a href="{% url 'sellcar' %}">Sell Car</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12">
+                        <div class="footer__option__item">
+                            <h5>Newsletter</h5>
+                            <p>Carsworld is an award-winning, full-service car dealership hub.</p>
+                            <form action="mailto: carsworldno1@gmail.com">
+                                <input type="text" placeholder="Email">
+                                <button type="submit"><i class="fa fa-send"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__copyright">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        <p class="footer__copyright__text">Copyright &copy;
+                            <script>
+                                document.write(new Date().getFullYear());
+                            </script>
+                            All rights reserved | This site is made by <a href="{% url 'develop' %}" target="_blank">Harikrishna and Mitang</a>
+                        </p>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Section End -->
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+    <!-- Js Plugins -->
+    <script src="{%static "js/jquery-3.3.1.min.js" %}"></script>
+    <script src="{%static "js/bootstrap.min.js" %}"></script>
+    <script src="{%static "js/jquery.magnific-popup.min.js" %}"></script>
+    <script src="{%static "js/mixitup.min.js" %}"></script>
+    <script src="{%static "js/masonry.pkgd.min.js" %}"></script>
+    <script src="{%static "js/jquery.slicknav.js" %}"></script>
+    <script src="{%static "js/owl.carousel.min.js" %}"></script>
+    <script src="{%static "js/main.js" %}"></script>
+    <script src="{%static "js/scroll.js" %}"></script>
+</body>
+
+</html>
