@@ -204,8 +204,8 @@ def finemail(request,pk):
            
         )
     email.send(fail_silently=False)
-    messages.info(request,'Approval Mail sent successfully')
-    return redirect('loanreqdetails',pk=pk)
+    requester.delete()
+    return render(request,'fhome.html')
 
 def finremail(request,pk):
     user = User.objects.filter(id=request.user.id).first()
