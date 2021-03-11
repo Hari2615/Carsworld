@@ -149,5 +149,5 @@ EMAIL_HOST_PASSWORD='carsworld123@'
 
 INTERNAL_IPS = [
     
-    #'127.0.0.1',
+    '127.0.0.1',
 ]

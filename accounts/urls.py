@@ -3,7 +3,7 @@ from django.urls import path
 from . import views
 from accounts.views import details
 urlpatterns = [
-    path('sellcar',views.sellcar_view,name='sellcar'),
+    path('sellcar/<int:pk>',views.sellcar_view,name='sellcar'),
     path('finreq/<int:pk>',views.finreq_view,name='finreq'),
     path('userlogin',views.login_request,name='userlogin'),
     path('customer_register',views.customer_register.as_view(),name='customer_register'),
@@ -16,7 +16,7 @@ urlpatterns = [
     path('requests',views.requests.as_view(),name='requests'),
     path('requests/fhomee',views.fhome,name='fhomee'),
     path('requests/<int:pk>',views.loanreqdetails.as_view(), name='loanreqdetails'),
-    path('buynewcar',views.buynewcar.as_view(),name='buynewcar'),
+    path('buynewcar',views.buynewcar.as_view(),name='buynewcarr'),
     path('buynewcar/<int:pk>',views.newdetails.as_view(), name='newdetails'),
     path('buyoldcar',views.buyoldcar.as_view(),name='buyoldcarr'),
     path('buyoldcar/<int:pk>',views.details.as_view(), name='details'),
@@ -33,6 +33,8 @@ urlpatterns = [
     path('favvview/<int:pk>',views.favvview,name='favvview'),
     path('favvouritel',views.favvouritel.as_view(),name='favvouritel'),
     path('buyoldcarr',views.used_view,name='buyoldcar'),
+    path('buynewcarr',views.new_view,name='buynewcar'),
+
 
     
 

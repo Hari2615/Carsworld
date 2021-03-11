@@ -15,7 +15,7 @@ from django.db.models import Q
 from django.conf import settings
 from django.contrib import messages
 from django import forms
-from .filters import usedcarfilter
+from .filters import usedcarfilter,newcarfilter
 
 def register(request):
     return render(request, '../templates/register.html')
@@ -79,21 +79,27 @@ def register(request):
 
 
 
-def sellcar_view(request):
+def sellcar_view(request,pk):
     context ={} 
     
     # create object of form 
     form = sellcarform(request.POST or None, request.FILES or None) 
-    
+    form.fields['user'].widget = forms.HiddenInput()
+    form.initial['user'] = pk
+      
     # check if form data is valid 
     if form.is_valid(): 
         # save the form data to model 
+        
+
+        #form.save(commit=False)
+        #form.user_=request.user
         form.save() 
         return redirect('Home')
-    
+        
   
     context['form']= form 
-    
+    context['pk']= pk
     return render(request, "sellcar.html", context) 
 
 def fhome(request):
@@ -104,7 +110,6 @@ def ahome(request):
 
 def develop(request):
     return render(request, 'develop.html')
-
 
 class buyoldcar(generic.ListView):
     model=sellcar
@@ -123,8 +128,6 @@ def email(request,pk):
             from_email=settings.EMAIL_HOST_USER,
             to=[seller.Email],
             reply_to=[user.email],
-        
-           
         )
     email.send(fail_silently=False)
     messages.info(request,'Mail with your information has been sent successfully to the owner.Please wait for the response.Thankyou')
@@ -311,10 +314,22 @@ def used_view(request):
     # dictionary for initial data with  
     # field names as keys 
     context ={} 
-    sellcar_list=sellcar.objects.all()
+    sellcar_list=sellcar.objects.all().exclude(user_id=request.user.id)#.exclude(Email=request.user.email)
     myFilter=usedcarfilter(request.GET,queryset=sellcar_list)
     sellcar_list=myFilter.qs
     # add the dictionary during initialization 
     context={"sellcar_list":sellcar_list, "myFilter":myFilter}
           
     return render(request, "accounts/sellcar_list.html", context) 
+
+def new_view(request): 
+    # dictionary for initial data with  
+    # field names as keys 
+    context ={} 
+    sellnewcar_list=sellnewcar.objects.all()
+    myFilter=newcarfilter(request.GET,queryset=sellnewcar_list)
+    sellnewcar_list=myFilter.qs
+    # add the dictionary during initialization 
+    context={"sellnewcar_list":sellnewcar_list, "myFilter":myFilter}
+          
+    return render(request, "accounts/sellnewcar_list.html", context) 

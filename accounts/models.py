@@ -40,7 +40,7 @@ class Financer(models.Model):
 
 class sellcar(models.Model):
   
-
+    user=models.ForeignKey(User,default=None,on_delete = models.CASCADE,null=True,blank=True)
     Ownername=models.CharField(default=None,max_length=250)
     Contactnumber=models.CharField(default=None,max_length=10)
     Email=models.EmailField(default=None,max_length=50)

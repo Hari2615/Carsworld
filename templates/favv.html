@@ -51,7 +51,7 @@
                                 
                                 <li><a href="{% url 'buyoldcar' %}">BUY OLD CARS</a></li>
                                 <li><a href="{% url 'buynewcar' %}">NEW CARS</a></li>
-                                <li><a href="{% url 'sellcar' %}">SELL CAR</a></li>
+                                <li><a href="{% url 'sellcar' pk=user.id %}">SELL CAR</a></li>
                                 <li><a href="">Hello {{user.first_name}}</a></li>
                                 <li><a href="{% url 'logout' %}">LOGOUT</a></li>
                                 <li><form action="search" method="GET"><input type="search" name="search" placeholder="search" id="search"> <a href="search" class="q" id="search">search</a></form></li>
@@ -153,6 +153,22 @@
                     </div>
                 </div>
             </div>
+    
+    <!-- Footer Section Begin -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__top">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="footer__top__logo">
+                            <a href="{% url 'Home' %}"><img src="{%static "images/logo.png" %}" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                       
+                    </div>
+                </div>
+            </div>
             <div class="footer__option">
                 <div class="row">
                     <div class="col-lg-4 col-md-6 col-sm-6">
@@ -174,9 +190,16 @@
                         <div class="footer__option__item">
                             <h5>Our Service</h5>
                             <ul>
+                                {%if user.is_authenticated%}
+
                                 <li><a href="{% url 'buyoldcar' %}">Buy Used Cars</a></li>
                                 <li><a href="{% url 'buynewcar' %}">Buy New Cars</a></li>
-                                <li><a href="{% url 'sellcar' %}">Sell Car</a></li>
+                                <li><a href="{% url 'sellcar' pk=user.id %}">Sell Car</a></li>
+                                {%else%}
+                                <li><a href="{% url 'userlogin' %}">Buy Used Cars</a></li>
+                                <li><a href="{% url 'userlogin' %}">Buy New Cars</a></li>
+                                <li><a href="{% url 'userlogin'  %}">Sell Car</a></li>
+                                {%endif%}
                             </ul>
                         </div>
                     </div>

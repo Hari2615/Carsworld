@@ -51,10 +51,9 @@
                                 
                                 <li><a href="{% url 'buyoldcar' %}">BUY USED CARS</a></li>
                                 <li><a href="{% url 'buynewcar' %}">NEW CARS</a></li>
-                                <li><a href="{% url 'sellcar' %}">SELL CAR</a></li>
+                                <li><a href="{% url 'sellcar' pk=user.id%}">SELL CAR</a></li>
                                 <li><a href="">Hello {{user.first_name}}</a></li>
                                 <li><a href="{% url 'logout' %}">LOGOUT</a></li>
-                                <li><form action="search" method="GET"><input type="search" name="search" placeholder="search" id="search"> <a href="search" class="q" id="search">search</a></form></li>
                                
                             </ul>
                             {%else%}
@@ -140,6 +139,7 @@
     </section>
     <!-- Portfolio Section End -->
 
+    <!-- Footer Section Begin -->
     <footer class="footer">
         <div class="container">
             <div class="footer__top">
@@ -175,9 +175,16 @@
                         <div class="footer__option__item">
                             <h5>Our Service</h5>
                             <ul>
+                                {%if user.is_authenticated%}
+
                                 <li><a href="{% url 'buyoldcar' %}">Buy Used Cars</a></li>
                                 <li><a href="{% url 'buynewcar' %}">Buy New Cars</a></li>
-                                <li><a href="{% url 'sellcar' %}">Sell Car</a></li>
+                                <li><a href="{% url 'sellcar' pk=user.id %}">Sell Car</a></li>
+                                {%else%}
+                                <li><a href="{% url 'userlogin' %}">Buy Used Cars</a></li>
+                                <li><a href="{% url 'userlogin' %}">Buy New Cars</a></li>
+                                <li><a href="{% url 'userlogin'  %}">Sell Car</a></li>
+                                {%endif%}
                             </ul>
                         </div>
                     </div>

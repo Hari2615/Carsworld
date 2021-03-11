@@ -72,7 +72,7 @@
                                 <li><a href="{% url 'buyoldcar' %}">BUY USED CARS</a></li>
                                <!-- <li><a href="{% url 'buyoldcar' %}">BUY USEDdd CARS</a></li> -->
                                 <li><a href="{% url 'buynewcar' %}">NEW CARS</a></li>
-                                <li><a href="{% url 'sellcar' %}">SELL CAR</a></li>
+                                <li><a href="{% url 'sellcar' pk=user.id %}">SELL CAR</a></li>
                                 <li><a href="">Hello {{user.first_name}}</a></li>
                                 <li><a href="{% url 'logout' %}">LOGOUT</a></li>
                                
@@ -148,7 +148,7 @@
                                 <span>For Selling your Car on</span>
                                 <h2>CARSWORLD</h2>
                                 {%if user.is_authenticated%}
-                                <a href="{% url 'sellcar' %}" class="primary-btn">Sell Car</a>
+                                <a href="{% url 'sellcar' pk=user.id%}" class="primary-btn">Sell Car</a>
                                 {%else%}
                                 <a href="{% url 'userlogin' %}" class="primary-btn">Sell Car</a>
                                 {%endif%}
@@ -365,9 +365,16 @@
                         <div class="footer__option__item">
                             <h5>Our Service</h5>
                             <ul>
+                                {%if user.is_authenticated%}
+
                                 <li><a href="{% url 'buyoldcar' %}">Buy Used Cars</a></li>
                                 <li><a href="{% url 'buynewcar' %}">Buy New Cars</a></li>
-                                <li><a href="{% url 'sellcar' %}">Sell Car</a></li>
+                                <li><a href="{% url 'sellcar' pk=user.id %}">Sell Car</a></li>
+                                {%else%}
+                                <li><a href="{% url 'userlogin' %}">Buy Used Cars</a></li>
+                                <li><a href="{% url 'userlogin' %}">Buy New Cars</a></li>
+                                <li><a href="{% url 'userlogin'  %}">Sell Car</a></li>
+                                {%endif%}
                             </ul>
                         </div>
                     </div>

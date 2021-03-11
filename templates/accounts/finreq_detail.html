@@ -180,75 +180,83 @@
   <br>
   <br>
   <br>
+  <!-- Footer Section Begin -->
   <footer class="footer">
-    <div class="container">
-        <div class="footer__top">
-            <div class="row">
-                <div class="col-lg-6 col-md-6">
-                    <div class="footer__top__logo">
-                        <a href="{% url 'Home' %}"><img src="{%static "images/logo.png" %}" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6">
-                    
-                </div>
-            </div>
-        </div>
-        <div class="footer__option">
-            <div class="row">
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="footer__option__item">
-                        <h5>About us</h5>
-                        <p>We are students of DEPSTAR Computer Engineering Department and this project is part of our final year curriculum.</p>
-                        
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-3 col-sm-3">
-                    <div class="footer__option__item">
-                        <h5>Who we are</h5>
-                        <ul>
-                            <li><a href="{% url 'develop' %}">Team</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-3 col-sm-3">
-                    <div class="footer__option__item">
-                        <h5>Our Service</h5>
-                        <ul>
-                            <li><a href="{% url 'buyoldcar' %}">Buy Used Cars</a></li>
-                            <li><a href="{% url 'buynewcar' %}">Buy New Cars</a></li>
-                            <li><a href="{% url 'sellcar' %}">Sell Car</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-12">
-                    <div class="footer__option__item">
-                        <h5>Newsletter</h5>
-                        <p>Carsworld is an award-winning, full-service car dealership hub.</p>
-                        <form action="mailto: carsworldno1@gmail.com">
-                            <input type="text" placeholder="Email">
-                            <button type="submit"><i class="fa fa-send"></i></button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="footer__copyright">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                    <p class="footer__copyright__text">Copyright &copy;
-                        <script>
-                            document.write(new Date().getFullYear());
-                        </script>
-                        All rights reserved | This site is made by <a href="{% url 'develop' %}" target="_blank">Harikrishna and Mitang</a>
-                    </p>
-                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>
+      <div class="container">
+          <div class="footer__top">
+              <div class="row">
+                  <div class="col-lg-6 col-md-6">
+                      <div class="footer__top__logo">
+                          <a href="{% url 'Home' %}"><img src="{%static "images/logo.png" %}" alt=""></a>
+                      </div>
+                  </div>
+                  <div class="col-lg-6 col-md-6">
+                     
+                  </div>
+              </div>
+          </div>
+          <div class="footer__option">
+              <div class="row">
+                  <div class="col-lg-4 col-md-6 col-sm-6">
+                      <div class="footer__option__item">
+                          <h5>About us</h5>
+                          <p>We are students of DEPSTAR Computer Engineering Department and this project is part of our final year curriculum.</p>
+                          
+                      </div>
+                  </div>
+                  <div class="col-lg-2 col-md-3 col-sm-3">
+                      <div class="footer__option__item">
+                          <h5>Who we are</h5>
+                          <ul>
+                              <li><a href="{% url 'develop' %}">Team</a></li>
+                          </ul>
+                      </div>
+                  </div>
+                  <div class="col-lg-2 col-md-3 col-sm-3">
+                      <div class="footer__option__item">
+                          <h5>Our Service</h5>
+                          <ul>
+                              {%if user.is_authenticated%}
+
+                              <li><a href="{% url 'buyoldcar' %}">Buy Used Cars</a></li>
+                              <li><a href="{% url 'buynewcar' %}">Buy New Cars</a></li>
+                              <li><a href="{% url 'sellcar' pk=user.id %}">Sell Car</a></li>
+                              {%else%}
+                              <li><a href="{% url 'userlogin' %}">Buy Used Cars</a></li>
+                              <li><a href="{% url 'userlogin' %}">Buy New Cars</a></li>
+                              <li><a href="{% url 'userlogin'  %}">Sell Car</a></li>
+                              {%endif%}
+                          </ul>
+                      </div>
+                  </div>
+                  <div class="col-lg-4 col-md-12">
+                      <div class="footer__option__item">
+                          <h5>Newsletter</h5>
+                          <p>Carsworld is an award-winning, full-service car dealership hub.</p>
+                          <form action="mailto: carsworldno1@gmail.com">
+                              <input type="text" placeholder="Email">
+                              <button type="submit"><i class="fa fa-send"></i></button>
+                          </form>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="footer__copyright">
+              <div class="row">
+                  <div class="col-lg-12 text-center">
+                      <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                      <p class="footer__copyright__text">Copyright &copy;
+                          <script>
+                              document.write(new Date().getFullYear());
+                          </script>
+                          All rights reserved | This site is made by <a href="{% url 'develop' %}" target="_blank">Harikrishna and Mitang</a>
+                      </p>
+                      <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                  </div>
+              </div>
+          </div>
+      </div>
+  </footer>
       <!-- Footer Section End -->
   
       <!-- Js Plugins -->

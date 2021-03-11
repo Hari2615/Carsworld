@@ -44,7 +44,13 @@
             -webkit-transition: width 0.4s;
             transition: width 0.4s ease-in-out;
           }
-          
+        #divv{ 
+            display: none;  
+            height: 100px; 
+            width: 100%; 
+            margin: 0 auto; 
+            color: white; 
+            }    
           
           
     </style>
@@ -73,12 +79,12 @@
                               <ul>
                                   
                                   <li><a href="{% url 'buyoldcar' %}">BUY USED CARS</a></li>
-                                  <li><a href="{% url 'sellcar' %}">SELL CAR</a></li>
+                                  <li><a href="{% url 'sellcar' pk=user.id%}">SELL CAR</a></li>
                                   <li><a href="{% url 'favvouritel' %}">FAVOURITES</a></li>
                                   <li><a href="">Hello {{user.first_name}}</a></li>
                                   <li><a href="{% url 'logout' %}">LOGOUT</a></li>
-                                  <li><form action="nsearch" method="GET"><input type="search" name="search" placeholder="Search" id="search"> </form></li>
-                              </ul>
+                                  <li><button class="btn btn-outline-light" onclick="GFG_Fun()">Filter</button></li>                              
+                                </ul>
                               {%else%}
                               <ul>
                                   <li class="active"><a href="{% url 'Home' %}">HOME</a></li>
@@ -106,8 +112,18 @@
 
     <!-- Breadcrumb Begin -->
     <div class="breadcrumb-option spad set-bg" data-setbg="{% static "images/breadcrumb-bg.jpg"%}">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
+                <div style="margin-right: auto; margin-left: auto;">
+                    <div id="divv">    
+                    <form method="get" style="color: white;">
+                        <div class="contact__form">
+                        {{myFilter.form.as_table}}      
+                        <button class="btn btn-outline-info" type="submit">  
+                            Search</button></div>
+                    </form>
+                    </div>    
+                    </div>
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb__text">
                         <h2>New Cars</h2>
@@ -161,6 +177,8 @@
     </section>
     <!-- Portfolio Section End -->
 
+    
+    <!-- Footer Section Begin -->
     <footer class="footer">
         <div class="container">
             <div class="footer__top">
@@ -196,9 +214,16 @@
                         <div class="footer__option__item">
                             <h5>Our Service</h5>
                             <ul>
+                                {%if user.is_authenticated%}
+
                                 <li><a href="{% url 'buyoldcar' %}">Buy Used Cars</a></li>
                                 <li><a href="{% url 'buynewcar' %}">Buy New Cars</a></li>
-                                <li><a href="{% url 'sellcar' %}">Sell Car</a></li>
+                                <li><a href="{% url 'sellcar' pk=user.id %}">Sell Car</a></li>
+                                {%else%}
+                                <li><a href="{% url 'userlogin' %}">Buy Used Cars</a></li>
+                                <li><a href="{% url 'userlogin' %}">Buy New Cars</a></li>
+                                <li><a href="{% url 'userlogin'  %}">Sell Car</a></li>
+                                {%endif%}
                             </ul>
                         </div>
                     </div>
@@ -241,6 +266,18 @@
     <script src="{%static "js/jquery.slicknav.js" %}"></script>
     <script src="{%static "js/owl.carousel.min.js" %}"></script>
     <script src="{%static "js/main.js" %}"></script>
+    <script>
+        
+  
+        function toggler(divId) { 
+            $("#" + divId).toggle(); 
+        } 
+  
+        function GFG_Fun() { 
+            toggler('divv'); 
+            
+        }
+    </script>
 </body>
 
 </html>

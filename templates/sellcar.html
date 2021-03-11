@@ -91,7 +91,7 @@
                      <br>
                      <br>
                      {% block content %}
-                      <form action="{% url 'sellcar' %}" method="POST" enctype="multipart/form-data"  novalidate>
+                      <form action="{% url 'sellcar' pk=pk%}" method="POST" enctype="multipart/form-data"  novalidate>
                             <div class="form-group">
                              {% csrf_token %}
                              {{form.as_p}}
@@ -109,6 +109,7 @@
    
     <!-- Call To Action Section End -->
 
+    <!-- Footer Section Begin -->
     <footer class="footer">
         <div class="container">
             <div class="footer__top">
@@ -119,7 +120,7 @@
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6">
-                        
+                       
                     </div>
                 </div>
             </div>
@@ -144,9 +145,16 @@
                         <div class="footer__option__item">
                             <h5>Our Service</h5>
                             <ul>
+                                {%if user.is_authenticated%}
+
                                 <li><a href="{% url 'buyoldcar' %}">Buy Used Cars</a></li>
                                 <li><a href="{% url 'buynewcar' %}">Buy New Cars</a></li>
-                                <li><a href="{% url 'sellcar' %}">Sell Car</a></li>
+                                <li><a href="{% url 'sellcar' pk=user.id %}">Sell Car</a></li>
+                                {%else%}
+                                <li><a href="{% url 'userlogin' %}">Buy Used Cars</a></li>
+                                <li><a href="{% url 'userlogin' %}">Buy New Cars</a></li>
+                                <li><a href="{% url 'userlogin'  %}">Sell Car</a></li>
+                                {%endif%}
                             </ul>
                         </div>
                     </div>
