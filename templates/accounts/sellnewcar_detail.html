@@ -51,7 +51,7 @@
                             {%if user.is_authenticated%}
                             <ul>
                                 
-                                <li><a href="{% url 'buyoldcar' %}">BUY OLD CARS</a></li>
+                                <li><a href="{% url 'buyoldcar' %}">BUY USED CARS</a></li>
                                 <li><a href="{% url 'buynewcar' %}">NEW CARS</a></li>
                                 <li><a href="{% url 'sellcar' %}">SELL CAR</a></li>
                                 <li><a href="{% url 'favvouritel' %}">FAVOURITES</a></li>
@@ -62,7 +62,7 @@
                             {%else%}
                             <ul>
                                 <li class="active"><a href="{% url 'Home' %}">HOME</a></li>
-                                <li><a href="{% url 'userlogin' %}">BUY OLD CARS</a></li>
+                                <li><a href="{% url 'userlogin' %}">BUY USED CARS</a></li>
                                 <li><a href="{% url 'userlogin' %}">NEW CARS</a></li>
                                 <li><a href="{% url 'userlogin' %}">SELL CAR</a></li>
                                 <li><a href="{% url 'userlogin' %}">LOGIN</a>

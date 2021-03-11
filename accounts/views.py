@@ -1,11 +1,11 @@
 from django.contrib.auth import login, logout,authenticate
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib import messages
 from django.views import generic
 from django.views.generic import CreateView,TemplateView
 from .form import CustomerSignUpForm, FinancerSignUpForm, sellcarform, finreqform
 from django.contrib.auth.forms import AuthenticationForm
-from .models import User,sellcar,Customer,sellnewcar,Financer,finreq, favv, favvv
+from .models import *
 from django.http import HttpResponseRedirect
 from django.utils import timezone
 from django.views.generic import ListView
@@ -15,6 +15,7 @@ from django.db.models import Q
 from django.conf import settings
 from django.contrib import messages
 from django import forms
+from .filters import usedcarfilter
 
 def register(request):
     return render(request, '../templates/register.html')
@@ -88,7 +89,7 @@ def sellcar_view(request):
     if form.is_valid(): 
         # save the form data to model 
         form.save() 
-    
+        return redirect('Home')
     
   
     context['form']= form 
@@ -108,8 +109,7 @@ def develop(request):
 class buyoldcar(generic.ListView):
     model=sellcar
     
-
-
+    
 
 class details(generic.DetailView):
     model=sellcar
@@ -306,3 +306,15 @@ class favvouritel(generic.ListView):
         return sellnewcar.objects.filter(id__in=favvv.objects.filter(User=self.request.user).values_list('car', flat=True))
         #return favv.objects.filter(User=self.request.user).values_list('car', flat=True)
 
+
+def used_view(request): 
+    # dictionary for initial data with  
+    # field names as keys 
+    context ={} 
+    sellcar_list=sellcar.objects.all()
+    myFilter=usedcarfilter(request.GET,queryset=sellcar_list)
+    sellcar_list=myFilter.qs
+    # add the dictionary during initialization 
+    context={"sellcar_list":sellcar_list, "myFilter":myFilter}
+          
+    return render(request, "accounts/sellcar_list.html", context) 

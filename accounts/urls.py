@@ -18,7 +18,7 @@ urlpatterns = [
     path('requests/<int:pk>',views.loanreqdetails.as_view(), name='loanreqdetails'),
     path('buynewcar',views.buynewcar.as_view(),name='buynewcar'),
     path('buynewcar/<int:pk>',views.newdetails.as_view(), name='newdetails'),
-    path('buyoldcar',views.buyoldcar.as_view(),name='buyoldcar'),
+    path('buyoldcar',views.buyoldcar.as_view(),name='buyoldcarr'),
     path('buyoldcar/<int:pk>',views.details.as_view(), name='details'),
     path('fincar',views.fincar.as_view(),name='fincar'),
     path('fincar/<int:pk>',views.findetails.as_view(), name='findetails'),
@@ -28,11 +28,11 @@ urlpatterns = [
     path('finremail/<int:pk>',views.finremail,name='finremail'),
     path('search',views.SearchResultsView.as_view(),name='search'),
     path('nsearch',views.SearchResultsnView.as_view(),name='nsearch'),
-  
     path('favview/<int:pk>',views.favview,name='favview'),
     path('favouritel',views.favouritel.as_view(),name='favouritel'),
     path('favvview/<int:pk>',views.favvview,name='favvview'),
     path('favvouritel',views.favvouritel.as_view(),name='favvouritel'),
+    path('buyoldcarr',views.used_view,name='buyoldcar'),
 
     
 
