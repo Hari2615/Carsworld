@@ -169,13 +169,11 @@
                             <ul>
                                 {%if user.is_authenticated%}
 
-                                <li><a href="{% url 'buyoldcar' %}">Buy Used Cars</a></li>
-                                <li><a href="{% url 'buynewcar' %}">Buy New Cars</a></li>
-                                <li><a href="{% url 'sellcar' pk=user.id %}">Sell Car</a></li>
+                                <li><a href="{% url 'requests' %}">Requests</a></li>
+
                                 {%else%}
-                                <li><a href="{% url 'userlogin' %}">Buy Used Cars</a></li>
-                                <li><a href="{% url 'userlogin' %}">Buy New Cars</a></li>
-                                <li><a href="{% url 'userlogin'  %}">Sell Car</a></li>
+                                <li><a href="{% url 'userlogin' %}">Requests</a></li>
+                            
                                 {%endif%}
                             </ul>
                         </div>

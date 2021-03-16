@@ -1,0 +1,234 @@
+{%load static%}
+
+
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Videograph Template">
+    <meta name="keywords" content="Videograph, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Favourite Cars</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="{%static "css/bootstrap.min.css"%}" type="text/css">
+    <link rel="stylesheet" href="{%static "css/font-awesome.min.css"%}" type="text/css">
+    <link rel="stylesheet" href="{%static "css/elegant-icons.css"%}" type="text/css">
+    <link rel="stylesheet" href="{%static "css/owl.carousel.min.css"%}" type="text/css">
+    <link rel="stylesheet" href="{%static "css/magnific-popup.css"%}" type="text/css">
+    <link rel="stylesheet" href="{%static "css/slicknav.min.css"%}" type="text/css">
+    <link rel="stylesheet" href="{%static "css/style.css"%}" type="text/css">
+    <link rel="icon" type="image/x-icon" href="{%static "images/slogo.png" %}"> 
+</head>
+
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Header Section Begin -->
+    <header class="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2">
+                    <div class="header__logo">
+                        <a href="/"><img src="{% static "images/logo.png" %}" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-lg-10">
+                    <div class="header__nav__option">
+                        <nav class="header__nav__menu mobile-menu">
+                            {%if user.is_authenticated%}
+                            <ul>
+                                
+                                <li><a href="{% url 'buyoldcar' %}">BUY USED CARS</a></li>
+                                <li><a href="{% url 'buynewcar' %}">NEW CARS</a></li>
+                                <li><a href="{% url 'sellcar' pk=user.id%}">SELL CAR</a></li>
+                                <li><a href="">Hello {{user.first_name}}</a></li>
+                                <li><a href="{% url 'logout' %}">LOGOUT</a></li>
+                               
+                            </ul>
+                            {%else%}
+                            <ul>
+                                <li class="active"><a href="{% url 'Home' %}">HOME</a></li>
+                                <li><a href="{% url 'userlogin' %}">BUY USED CARS</a></li>
+                                <li><a href="{% url 'userlogin' %}">NEW CARS</a></li>
+                                <li><a href="{% url 'userlogin' %}">SELL CAR</a></li>
+                                <li><a href="{% url 'userlogin' %}">LOGIN</a>
+                                    <ul class="dropdown">
+                                        <li><a href="{% url 'userlogin' %}">LOGIN</a></li>
+                                        <li><a href="{% url 'register' %}">REGISTER</a></li>
+                                    </ul>
+                                </li>
+                               
+                            </ul>
+                            {%endif%}
+                        </nav>
+                        
+                    </div>
+                </div>
+            </div>
+            <div id="mobile-menu-wrap"></div>
+        </div>
+    </header>
+    <!-- Header End -->
+
+    <!-- Breadcrumb Begin -->
+    <div class="breadcrumb-option spad set-bg" data-setbg="{% static "images/breadcrumb-bg.jpg"%}">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb__text">
+                        <h2>My Ads</h2>
+                        <div class="breadcrumb__links">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb End -->
+
+    <!-- Portfolio Section Begin -->
+    <section class="portfolio spad">
+        <div class="container">
+            
+            <div class="row portfolio__gallery">
+              {% for sellcar in sellcar_list %}
+              
+              
+                <div class="col-lg-4 col-md-6 col-sm-6 mix branding">
+                   
+                  <div class="portfolio__item">
+                        <a href="#" >
+                        <div class="portfolio__item__video set-bg" data-setbg="{{sellcar.Frontview.url}}">
+                         
+                        </div></a>
+                        <div class="portfolio__item__text">
+                            <h4>{{sellcar.brand}} {{sellcar.modelname}}</h4>
+                            <ul>
+                                <li>Price: {{sellcar.price}}</li>
+                                <li>Fuel Type: {{sellcar.fueltype}}</li>
+                            </ul>
+                            <a href="{% url 'delete' %}" class="primary-btn">Delete AD</a>
+
+                        </div>
+                    </div>
+                </div>
+              
+              {%endfor%}
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="pagination__option">
+                        <a href="#" class="arrow__pagination left__arrow"><span class="arrow_left"></span> Prev</a>
+                        <a href="#" class="number__pagination">1</a>
+                        <a href="#" class="number__pagination">2</a>
+                        <a href="#" class="arrow__pagination right__arrow">Next <span class="arrow_right"></span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Portfolio Section End -->
+
+    <!-- Footer Section Begin -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__top">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="footer__top__logo">
+                            <a href="{% url 'Home' %}"><img src="{%static "images/logo.png" %}" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                       
+                    </div>
+                </div>
+            </div>
+            <div class="footer__option">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="footer__option__item">
+                            <h5>About us</h5>
+                            <p>We are students of DEPSTAR Computer Engineering Department and this project is part of our final year curriculum.</p>
+                            
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-3">
+                        <div class="footer__option__item">
+                            <h5>Who we are</h5>
+                            <ul>
+                                <li><a href="{% url 'develop' %}">Team</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-3">
+                        <div class="footer__option__item">
+                            <h5>Our Service</h5>
+                            <ul>
+                                {%if user.is_authenticated%}
+
+                                <li><a href="{% url 'buyoldcar' %}">Buy Used Cars</a></li>
+                                <li><a href="{% url 'buynewcar' %}">Buy New Cars</a></li>
+                                <li><a href="{% url 'sellcar' pk=user.id %}">Sell Car</a></li>
+                                {%else%}
+                                <li><a href="{% url 'userlogin' %}">Buy Used Cars</a></li>
+                                <li><a href="{% url 'userlogin' %}">Buy New Cars</a></li>
+                                <li><a href="{% url 'userlogin'  %}">Sell Car</a></li>
+                                {%endif%}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12">
+                        <div class="footer__option__item">
+                            <h5>Newsletter</h5>
+                            <p>Carsworld is an award-winning, full-service car dealership hub.</p>
+                            <form action="mailto: carsworldno1@gmail.com">
+                                <input type="text" placeholder="Email">
+                                <button type="submit"><i class="fa fa-send"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__copyright">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        <p class="footer__copyright__text">Copyright &copy;
+                            <script>
+                                document.write(new Date().getFullYear());
+                            </script>
+                            All rights reserved | This site is made by <a href="{% url 'develop' %}" target="_blank">Harikrishna and Mitang</a>
+                        </p>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Section End -->
+
+    <!-- Js Plugins -->
+    <script src="{%static "js/jquery-3.3.1.min.js" %}"></script>
+    <script src="{%static "js/bootstrap.min.js" %}"></script>
+    <script src="{%static "js/jquery.magnific-popup.min.js" %}"></script>
+    <script src="{%static "js/mixitup.min.js" %}"></script>
+    <script src="{%static "js/masonry.pkgd.min.js" %}"></script>
+    <script src="{%static "js/jquery.slicknav.js" %}"></script>
+    <script src="{%static "js/owl.carousel.min.js" %}"></script>
+    <script src="{%static "js/main.js" %}"></script>
+</body>
+
+</html>

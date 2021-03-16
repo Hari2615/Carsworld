@@ -9,8 +9,8 @@ class User(AbstractUser):
     is_financer = models.BooleanField(default=False)
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
-    email=models.EmailField(default='abc@xyz.com',max_length=50)
-    phone_number = models.CharField(default='8469211691',max_length=10)
+    email=models.EmailField(default=None,max_length=50)
+    phone_number = models.CharField(default='9999999999',max_length=10)
   
 
 class Customer(models.Model):
@@ -99,6 +99,7 @@ class finreq(models.Model):
     UNMARRIED='Unmarried'
     MS_CHOICES=((MARRIED,'MARRIED'),(UNMARRIED,'UNMARRIED'))
     user_id=models.ForeignKey(Financer,on_delete=models.CASCADE,related_name='financer_id')
+    car=models.ForeignKey(sellcar,on_delete=models.CASCADE,related_name='car_id',default=None)
     firstname=models.CharField(default=None,max_length=250)
     middlename=models.CharField(default=None,max_length=250)
     lastname=models.CharField(default=None,max_length=250)

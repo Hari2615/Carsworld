@@ -21,9 +21,11 @@ class CustomerSignUpForm(UserCreationForm):
         user.first_name = self.cleaned_data.get('first_name')
         user.last_name = self.cleaned_data.get('last_name')
         user.email=self.cleaned_data.get('email')
+        user.phone_number=self.cleaned_data.get('phone_number')
+
         user.save()
         customer = Customer.objects.create(user=user)
-        customer.phone_number=self.cleaned_data.get('phone_number')
+       
         customer.location=self.cleaned_data.get('location')
         customer.save()
         return user
@@ -48,9 +50,9 @@ class FinancerSignUpForm(UserCreationForm):
         user.is_financer = True
         user.first_name = self.cleaned_data.get('first_name')
         user.email=self.cleaned_data.get('email')
+        user.phone_number=self.cleaned_data.get('phone_number')
         user.save()
         financer = Financer.objects.create(user=user)
-        financer.phone_number=self.cleaned_data.get('phone_number')
         financer.interest_rate=self.cleaned_data.get('interest_rate')
         financer.Address=self.cleaned_data.get('Address')
         financer.City=self.cleaned_data.get('City')
@@ -75,4 +77,4 @@ class finreqform(forms.ModelForm):
         fields="__all__"
         #exclude=('user_id',)
         
-        
+ 

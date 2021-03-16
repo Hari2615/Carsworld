@@ -125,6 +125,7 @@
       <div class="logo spad">
           <div class="container">
               <div class="logo__carousel owl-carousel" style="color: white;">
+                <img src="{%static "images/details/logo-22.png" %}" alt="">
                   <img src="{%static "images/details/logo-22.png" %}" alt="">
                   <img src="{%static "images/details/logo-13.png" %}" alt="">
                   <img src="{%static "images/details/logo-21.png" %}" alt="">
@@ -142,6 +143,7 @@
       <div class="logo spad">
           <div class="container">
               <div class="logo__carousel owl-carousel" style="color: white;">
+                  <h2 style="color: white;text-align:center">{{finreq.car_id}}</h2>
                   <h2 style="color: white;text-align:center">{{finreq.contactnumber}}</h2>
                   <h6 style="color: white;text-align:center">{{finreq.email}}</h6>
                   <h2 style="color: white;text-align:center">{{finreq.dateofb}}</h2>
@@ -161,6 +163,11 @@
       <a href="{% url 'finemail' pk=finreq.id %}" class="primary-btn" id="mailmail">Accept</a>
       {%else%}
       <a href="login" class="primary-btn" id="mailmail">Accept</a>
+      {%endif%}
+      {% if user.is_authenticated %}
+      <a href="{% url 'buyoldcarr' pk=finreq.car_id  %}" class="primary-btn" id="maill">View Car</a>
+      {%else%}
+        <a href="login" class="primary-btn" id="maill">Reject</a>
       {%endif%}
       {% if user.is_authenticated %}
       <a href="{% url 'finremail' pk=finreq.id %}" class="primary-btn" id="maill">Reject</a>
@@ -216,17 +223,15 @@
                       <div class="footer__option__item">
                           <h5>Our Service</h5>
                           <ul>
-                              {%if user.is_authenticated%}
+                            {%if user.is_authenticated%}
 
-                              <li><a href="{% url 'buyoldcar' %}">Buy Used Cars</a></li>
-                              <li><a href="{% url 'buynewcar' %}">Buy New Cars</a></li>
-                              <li><a href="{% url 'sellcar' pk=user.id %}">Sell Car</a></li>
-                              {%else%}
-                              <li><a href="{% url 'userlogin' %}">Buy Used Cars</a></li>
-                              <li><a href="{% url 'userlogin' %}">Buy New Cars</a></li>
-                              <li><a href="{% url 'userlogin'  %}">Sell Car</a></li>
-                              {%endif%}
-                          </ul>
+                            <li><a href="{% url 'requests' %}">Requests</a></li>
+
+                            {%else%}
+                            <li><a href="{% url 'userlogin' %}">Requests</a></li>
+                        
+                            {%endif%}
+                        </ul>
                       </div>
                   </div>
                   <div class="col-lg-4 col-md-12">

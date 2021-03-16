@@ -8,9 +8,7 @@
 
 reports for admin
 
-My ads for customer
 
-potani add potane na dekhai
 
 mitang ni portfolio site
 
@@ -18,4 +16,4 @@ testing
 
 bas have
 
-sudo /usr/pgadmin4/bin/setup-web.sh
+    sudo /usr/pgadmin4/bin/setup-web.sh
