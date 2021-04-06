@@ -17,3 +17,47 @@ testing
 bas have
 
     sudo /usr/pgadmin4/bin/setup-web.sh
+
+    celery -A carsworld worker -l info
+
+    redis-server
+
+    docker ps: to check which containers are running.
+    sudo docker info: information about image(e.g How many Containers and images)
+    docker images:  To check all available images.
+    docker ps -a : check status of all the containers.
+    docker run redis:4.0--  First pull redis-4.0 and start redis-4.0
+    docker image rm <imgname>: To remove docker image
+    docker container rm <containername>: To remove docker container
+    docker container prune: remove all stopped containers.
+
+
+    Volume:
+    docker volume create new-vol//create Volume
+    docker volume ls   //list volumes
+    docker volume inspect new-vol //inspect 
+    docker volume rm new-vol //remove
+
+   
+
+    Bind the container port with host port:  0 docker -p 6000:6379  #where 6000 is host port and 6379 is a container port.
+
+ 
+
+ 
+
+ 
+
+ 
+
+    A Docker image is an immutable (unchangeable) file that contains the source code, libraries, dependencies, tools, and other files needed for an application to run.
+    A Docker container is a virtualized run-time environment where users can isolate applications from the underlying system.
+    Container is a running environment of an image.
+
+
+
+
+
+   ACCOUNT SID: ACf4de9c39cbf88686e3f64786638f79bd
+   AUTH TOKEN:2c2d679d1a7ac9f168508274062702b7
+   PHONE NUMBER: +13178544613

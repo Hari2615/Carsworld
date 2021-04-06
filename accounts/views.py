@@ -16,7 +16,7 @@ from django.conf import settings
 from django.contrib import messages
 from django import forms
 from .filters import usedcarfilter,newcarfilter
-from .tasks import send_email
+#from .tasks import send_email
 
 
 def register(request):
@@ -111,7 +111,6 @@ def ahome(request):
     return render(request, 'ahome.html')
 
 def develop(request):
-    my_first_task.delay(10)
     return render(request, 'develop.html')
 
 class buyoldcar(generic.ListView):
@@ -150,8 +149,17 @@ def email(request,pk):
     to=[seller.Email]
     reply_to=[user.email]
 
-    send_email.delay(subject=subject,body=body,from_email=from_email,to=to,reply_to=reply_to)
-
+   # send_email.delay(subject=subject,body=body,from_email=from_email,to=to,reply_to=reply_to)
+    email = EmailMessage(
+        
+                subject=subject,
+                body=body,
+                from_email=from_email,
+                to=to,
+                reply_to=reply_to,
+            )
+    
+    email.send(fail_silently=False)
   
     messages.info(request,'Mail with your information has been sent successfully to the owner.Please wait for the response.Thankyou')
     return redirect('details',pk=pk)
@@ -165,7 +173,7 @@ def newemail(request,pk):
     from_email=settings.EMAIL_HOST_USER
     to=[seller.Email]
     reply_to=[user.email]
-    send_email.delay(subject=subject,body=body,from_email=from_email,to=to,reply_to=reply_to)
+    #send_email.delay(subject=subject,body=body,from_email=from_email,to=to,reply_to=reply_to)
 
     messages.info(request,'Mail with your information has been sent successfully to the Company.Please wait for the response.Thankyou')
     return redirect('newdetails',pk=pk)
@@ -182,7 +190,7 @@ def finemail(request,pk):
         
            
         
-    send_email.delay(subject=subject,body=body,from_email=from_email,to=to,reply_to=reply_to)
+    #send_email.delay(subject=subject,body=body,from_email=from_email,to=to,reply_to=reply_to)
 
     requester.delete()
     return render(request,'fhome.html')
@@ -197,22 +205,31 @@ def finremail(request,pk):
     to=[requester.email]
     reply_to=[user.email]
         
-    send_email.delay(subject=subject,body=body,from_email=from_email,to=to,reply_to=reply_to)
-       
-    requester.delete()
-    return render(request,'fhome.html')
-
-class buynewcar(generic.ListView):
-    model=sellnewcar
-
-class requests(generic.ListView):
-    model=finreq
+    #send_email.delay(subject=subject,body=body)
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['requests'] = finreq.objects.filter(user_id_id=self.request.user.id).all()
         
-        return context    
+        return context
+
+class buynewcar(generic.ListView):
+
+    model=sellnewcar    
         
+class requests(generic.ListView):
+
+    model=finreq
+
+    def get_context_data(self, **kwargs):
+
+        context = super().get_context_data(**kwargs)
+
+        context['requests'] = finreq.objects.filter(user_id_id=self.request.user.id).all()
+
+        
+
+        return context 
+
 
 class loanreqdetails(generic.DetailView):
     model=finreq
@@ -250,6 +267,7 @@ def finreq_view(request,pk):
         # save the form data to model 
 
         form.save() 
+        return redirect('/')
   
     context['form']= form 
     context['pk']= pk
